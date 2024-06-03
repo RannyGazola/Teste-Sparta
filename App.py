@@ -9,10 +9,10 @@ def homepage(data_pesq):
     resultados = []
     try:
         con = mysql.connector.connect(
-            host='localhost',
-            database='cad_cia_aberta',
-            user='root',
-            password='123456'
+            host='nj5rh9gto1v5n05t.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+            database='lpwutk3lkfoit7km',
+            user='awtwiladckiuvow0',
+            password='u0yx147k7k3cn6p8'
         )
 
         if con.is_connected():
