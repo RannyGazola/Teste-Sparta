@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Buscar por Data</title>
+</head>
+<body>
+    <div class="container">
+          <h1>Buscar por Data</h1>
+          <form method="post">
+            <div class="form-group">
+              <label for="data">Digite a data a ser pesquisada (YYYY-MM-DD):</label>
+              <input type="text" class="form-control" id="data" name="data" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+          </form>
+          <hr>
+          <h2>Resultados para a data: {{ data_pesq }}</h2>
+          {% if resultados %}
+            <ul>
+            {% for row in resultados %}
+              <li>
+                <strong>CNPJ:</strong> {{ row[0] }}<br>
+                <strong>Denominação Social:</strong> {{ row[1] }}<br>
+                <strong>Situação:</strong> {{ row[3] }}<br>
+                <strong>Data de registro:</strong> {{ row[2] }}<br>
+                <strong>Data de início da situação:</strong> {{ row[4] }}<br>
+                <br>
+              </li>
+            {% endfor %}
+            </ul>
+          {% else %}
+            <p>Nenhum registro encontrado para a data: {{ data_pesq }}</p>
+          {% endif %}
+        </div>

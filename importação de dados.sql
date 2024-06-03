@@ -1,0 +1,12 @@
+USE cad_cia_aberta;
+LOAD DATA INFILE 'C:\ProgramData\MySQL\MySQL Server 8.0\Uploads\cad_cia_aberta.csv'
+INTO TABLE cad_cia_aberta
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(CNPJ_CIA,DENOM_SOCIAL,DT_REG,SIT,DT_INI_SIT,INFO_DATA);
+
+SELECT * CNPJ_CIA
+
+
