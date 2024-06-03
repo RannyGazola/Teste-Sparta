@@ -4,7 +4,7 @@ from mysql.connector import Error
 
 app = Flask(__name__)
 
-# Consulta
+
 def homepage(data_pesq):
     resultados = []
     try:
@@ -28,15 +28,22 @@ def homepage(data_pesq):
     return resultados
 
 # Resultados
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     resultados = []
     data_pesq = ""
     if request.method == 'POST':
-        data_pesq = request.form['data']
+        dia = request.form['dia']
+        mes = request.form['mes']
+        ano = request.form['ano']
+        data_pesq = f"{ano}-{mes.zfill(2)}-{dia.zfill(2)}"  # Combina dia, mês e ano em formato YYYY-MM-DD
         resultados = homepage(data_pesq)
     return render_template('homepage.html', resultados=resultados, data_pesq=data_pesq)
 
 # Inicialização
+
+
 if __name__ == '__main__':
     app.run(debug=True)

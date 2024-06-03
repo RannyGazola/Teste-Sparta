@@ -4,33 +4,67 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Buscar por Data</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #222;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-          <h1>Buscar por Data</h1>
-          <form method="post">
-            <div class="form-group">
-              <label for="data">Digite a data a ser pesquisada (YYYY-MM-DD):</label>
-              <input type="text" class="form-control" id="data" name="data" required>
+        <h1>Buscar por Data</h1>
+        <form method="post">
+            <div class="form-group mb-3">
+                <label for="dia">Dia:</label>
+                <input type="number" class="form-control" id="dia" name="dia" min="1" max="31" required>
             </div>
-            <button type="submit" class="btn btn-primary">Buscar</button>
-          </form>
-          <hr>
-          <h2>Resultados para a data: {{ data_pesq }}</h2>
-          {% if resultados %}
-            <ul>
+            <div class="form-group mb-3">
+                <label for="mes">Mês:</label>
+                <input type="number" class="form-control" id="mes" name="mes" min="1" max="12" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="ano">Ano:</label>
+                <input type="number" class="form-control" id="ano" name="ano" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </form>
+        <hr>
+        <h2>Resultados para a data: {{ data_pesq }}</h2>
+        {% if resultados %}
+            <ul class="list-group">
             {% for row in resultados %}
-              <li>
-                <strong>CNPJ:</strong> {{ row[0] }}<br>
-                <strong>Denominação Social:</strong> {{ row[1] }}<br>
-                <strong>Situação:</strong> {{ row[3] }}<br>
-                <strong>Data de registro:</strong> {{ row[2] }}<br>
-                <strong>Data de início da situação:</strong> {{ row[4] }}<br>
-                <br>
-              </li>
+                <li class="list-group-item bg-dark text-light">
+                    <strong>CNPJ:</strong> {{ row[0] }}<br>
+                    <strong>Denominação Social:</strong> {{ row[1] }}<br>
+                    <strong>Situação:</strong> {{ row[3] }}<br>
+                    <strong>Data de registro:</strong> {{ row[2] }}<br>
+                    <strong>Data de início da situação:</strong> {{ row[4] }}<br>
+                </li>
             {% endfor %}
             </ul>
-          {% else %}
+        {% else %}
             <p>Nenhum registro encontrado para a data: {{ data_pesq }}</p>
-          {% endif %}
-        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
